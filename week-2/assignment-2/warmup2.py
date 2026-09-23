@@ -26,3 +26,8 @@ print("Today's date is", ans)
 #The error message is: NameError: name 'num6' is not defined. This error occurs because the variable num6 has not been defined before it is used in the print statement. To fix this error, you need to define the variable num6 with a value before using it in the print statement.
 num6 = 6
 print(f"{4+num6}")
+
+#Part 2: Mini-Project
+fahr=input("Enter temperature in Fahrenheit: ")
+cels=(float(fahr)-32)*5/9
+print(f"{float(fahr):.1f} degrees Fahrenheit is {cels:.1f} in Celsius")
