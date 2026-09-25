@@ -28,12 +28,14 @@ def search_number(numbers, search):
         print(f"{search} is not in the list.")  
     
 def sort_list(numbers):
-    lengthy=len(numbers)
+    
+    nums_copy = numbers.copy() 
+    lengthy = len(nums_copy)
     for i in range(lengthy-1):
         for j in range(lengthy-i-1):
-                if numbers[j]>numbers[j+1]:
-                    numbers[j],numbers[j+1]=numbers[j+1],numbers[j]
-    return numbers
+                if nums_copy[j] > nums_copy[j+1]:
+                    nums_copy[j], nums_copy[j+1] = nums_copy[j+1], nums_copy[j]
+    return nums_copy
 
 def show_menu():
     
