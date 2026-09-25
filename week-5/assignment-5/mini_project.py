@@ -2,7 +2,9 @@ numbers = [42, 17, 83, 5, 61, 29, 74, 8, 55, 93, 31, 66, 14, 47, 78, 3, 59, 22, 
 input_choice = 0
 max=-1
 min=100
+inList=False
 while input_choice != "5":
+    inList=False
     print(f"++++++++ Number Cruncher ++++++++\n")
     print(f"1. Find Max")
     print(f"2. Find Minimum")
@@ -25,12 +27,13 @@ while input_choice != "5":
         case "3":
             search=input("Enter a number to search for: ")
             for n in numbers:
-                if n==int(search):
+                if n==int(search) and inList==False:
                     print(f"{search} is in the list at index {numbers.index(n)}.")
+                    inList=True
                     break
-                else:
-                    print(f"{search} is not in the list.")
-                    break
+            if inList==False:
+                print(f"{search} is not in the list.")
+                
 
         case "4":
             lengthy=len(numbers)
