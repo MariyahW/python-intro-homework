@@ -1,0 +1,4 @@
+Utilities expense Report generated - September 26, 2026
+2024-03-04: 120.0
+2024-03-10: 59.99
+Total: $179.99
