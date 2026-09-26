@@ -1,4 +1,4 @@
 from datetime import datetime
 now=datetime.now()
 formatted=now.strftime("%B %d, %Y")
-print(formatted)
+print(f"Today is {formatted}.")
