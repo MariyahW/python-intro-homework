@@ -3,7 +3,7 @@
 # python3 warmup2.py 
 # Output: What is todfay's date?Jan. 1, 2000
 # Today's date is Jan. 1, 2000
-ans=input("What is todfay's date?")
+ans = input("What is todfay's date?")
 print("Today's date is", ans)
 
 #Warmup3
@@ -26,4 +26,4 @@ print("Today's date is", ans)
 #The error message is: NameError: name 'num6' is not defined. This error occurs because the variable num6 has not been defined before it is used in the print statement. To fix this error, you need to define the variable num6 with a value before using it in the print statement.
 num6 = 6
 print(f"{4+num6}")
-
+# 
