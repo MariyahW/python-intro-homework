@@ -1,4 +1,4 @@
-age=input("Please enter your age: ")
+age = input("Please enter your age: ")
 if int(age)>=65:
     print("You are a senior.")
 elif int(age)>=18 and int(age)<65:

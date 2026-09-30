@@ -1,8 +1,8 @@
-day=input("What day of the week would you like to complete the suggested activity?")
-dur=input("How about the time of day? Morning, Afternoon, or Evening?")
+day = input("What day of the week would you like to complete the suggested activity?")
+dur = input("How about the time of day? Morning, Afternoon, or Evening?")
 
-day=day.lower()
-dur=dur.lower()
+day = day.lower()
+dur = dur.lower()
 match day:
     case "monday" | "tuesday":
         if dur=="morning":
