@@ -1,7 +1,10 @@
 def celToFahr(cel):
-    return (cel * 9/5) + 32
+    return (cel * 9 / 5) + 32
+
+
 def fahrToCel(fahr):
-    return (fahr - 32) * 5/9
+    return (fahr - 32) * 5 / 9
+
 
 print(f"0 degrees Celsius is {celToFahr(0)} degrees Fahrenheit")  # Output: 32.0
 print(f"32 degrees Fahrenheit is {fahrToCel(32)} degrees Celsius")  # Output: 0.0
