@@ -3,6 +3,7 @@ input_choice = 0
 max = -1
 min = 100
 inList = False
+counter = 0
 while input_choice != "5":
     inList = False
     print(f"++++++++ Number Cruncher ++++++++\n")
@@ -28,9 +29,10 @@ while input_choice != "5":
             search = input("Enter a number to search for: ")
             for n in numbers:
                 if n == int(search) and inList == False:
-                    print(f"{search} is in the list at index {numbers.index(n)}.")
+                    print(f"{search} is in the list at index {counter}.")
                     inList = True
                     break
+                counter += 1
             if inList == False:
                 print(f"{search} is not in the list.")
 
