@@ -10,7 +10,7 @@ def find_max(numbers):
     for n in numbers:
         if n > max:
             max = n
-    print(f"The maximum number in the list is: {max}")
+    return max
 
 
 def find_min(numbers):
@@ -18,21 +18,23 @@ def find_min(numbers):
     for n in numbers:
         if n < min:
             min = n
-    print(f"The minimum number in the list is: {min}")
+    return min
 
 
-def search_number(numbers, search):
+def search(numbers, searcher):
     inList = False
     for n in numbers:
-        if n == int(search) and inList == False:
-            print(f"{search} is in the list at index {numbers.index(n)}.")
+        if n == int(searcher) and inList == False:
             inList = True
-            break
+            return numbers.index(n)
+            # print(f"{search} is in the list at index {numbers.index(n)}.")
+            #
+            # break
     if inList == False:
-        print(f"{search} is not in the list.")
+        return -1
 
 
-def sort_list(numbers):
+def bubble_sort(numbers):
 
     nums_copy = numbers.copy()
     lengthy = len(nums_copy)
@@ -62,16 +64,22 @@ def main():
 
         match input_choice:
             case "1":
-                find_max(numbers)
+                print(f"The maximum number in the list is:{find_max(numbers)}")
             case "2":
-                find_min(numbers)
+                print(f"The minimum number in the list is: {find_min(numbers)}")
             case "3":
-                search = input("Enter a number to search for: ")
-                search_number(numbers, search)
+                searcher = input("Enter a number to search for: ")
+
+                ans = search(numbers, searcher)
+                if ans == -1:
+                    print(f"{searcher} is not in the list.")
+                else:
+                    print(f"{searcher} is in the list at index {ans}.")
+
                 # inList=False
 
             case "4":
-                sorted_list = sort_list(numbers)
+                sorted_list = bubble_sort(numbers)
                 print(f"The sorted list is: {sorted_list}")
 
             case "5":
@@ -82,4 +90,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print(numbers)  # remains unsorted
+    # print(numbers)  # remains unsorted
