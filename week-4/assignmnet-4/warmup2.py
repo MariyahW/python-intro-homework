@@ -1,10 +1,8 @@
-student={"name":"John",
-         "grade":10,
-         "courses":["Math","Science","History"]}
+student = {"name": "John", "grade": 10, "courses": ["Math", "Science", "History"]}
 
-for key,value in student.items():
+for key, value in student.items():
     print(f"{key}:{value}")
 
-student["graduated"]=False
+student["graduated"] = False
 
 print(student)
