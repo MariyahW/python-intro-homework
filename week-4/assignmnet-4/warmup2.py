@@ -1,4 +1,4 @@
-student = {"name": "John", "grade": 10, "courses": ["Math", "Science", "History"]}
+student = {"name": "John", "grade": 10, " subjects": ["Math", "Science", "History"]}
 
 for key, value in student.items():
     print(f"{key}:{value}")
