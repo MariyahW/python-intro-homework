@@ -1,4 +1,4 @@
 Transport expense Report generated - October 07, 2026
-2024-03-02: $35.0
-2024-03-06: $18.5
+2024-03-02: $35.00
+2024-03-06: $18.50
 Total: $53.50
