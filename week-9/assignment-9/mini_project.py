@@ -59,30 +59,37 @@ try:
     data = data["data"]["objects"]
     # print(data)
     ans = create()
-    while ans != 3:
+    while True:
         match ans:
             case 1:
                 searchTermC = input("What is your search term? ").lower()
                 countries = searchName(data, searchTermC)
-                for country in countries:
-                    print(
-                        f"{country["country"]} | Capital : {country["capital"]} | Region : {country["region"]} | Population {country["population"]}"
-                    )
-                    create()
+                if not countries:
+                    print(f"No countries found matching {searchTermC}")
+                else:
+                    for country in countries:
+                        print(
+                            f"{country["country"]} | Capital : {country["capital"]} | Region : {country["region"]} | Population {country["population"]}"
+                        )
+                ans = create()
             case 2:
                 searchTermR = input(
                     "What region would you like to search for? "
                 ).lower()
 
                 newList = filterRegion(data, searchTermR)
-                for country in newList:
-                    print(f"{country["name"]}")
-                create()
+                if not newList:
+                    print(f"No regions found matching {searchTermR}")
+                else:
+                    for country in newList:
+                        print(f"{country["name"]}")
+                ans = create()
             case 3:
                 print("Thanks for stopping by!")
+                break
             case _:
                 print("Invalid entry. Try again. ")
-                create()
+                # ans = create()
 
 except Exception as err:
     print(err)
