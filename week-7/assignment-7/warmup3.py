@@ -1,9 +1,10 @@
 import os
+
 print(f"\n{os.getcwd()} \n")
 
 if os.path.exists("../data/expenses.csv"):
-    print("found it \n")
+    print("expenses.csv found \n")
 else:
-    print("nope \n")
-path=os.path.join("..","data","expenses.csv")
+    print("expenses.csv not found \n")
+path = os.path.join("..", "data", "expenses.csv")
 print(path)
