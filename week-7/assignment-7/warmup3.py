@@ -1,6 +1,6 @@
 import os
 
-print(f"\n{os.getcwd()} \n")
+print(f"{os.getcwd()}")
 
 if os.path.exists("../data/expenses.csv"):
     print("expenses.csv found.")
