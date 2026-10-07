@@ -1,0 +1,33 @@
+import os
+import csv
+from datetime import datetime
+
+items = []
+total = 0
+cat = input("Which category are you searching for?")
+cat_formatted = cat.strip().capitalize()
+try:
+    path = os.path.join("..", "data", "expenses.csv")
+    if not os.path.exists(path):
+        print("file does not exist")
+        exit()
+    with open(path, "r") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            row["amount"] = float(row["amount"])
+            if row["category"].lower() == cat.lower():
+                items.append(row)
+            # print(row)
+            # print(items)
+
+    for item in items:
+        total += item["amount"]
+    # print(total)
+    curDate = datetime.now().strftime("%B %d, %Y")
+    with open(f"{cat_formatted}_report.txt", "w") as file:
+        file.write(f"{cat_formatted} expense Report generated - {curDate}\n")
+        for item in items:
+            file.write(f"{item['date']}: ${item['amount']:.2f}\n")
+        file.write(f"Total: ${total:.2f}")
+except Exception as error:
+    print(error)
