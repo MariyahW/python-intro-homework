@@ -6,6 +6,7 @@ inList = False
 counter = 0
 while input_choice != "5":
     inList = False
+    counter = 0
     print(f"++++++++ Number Cruncher ++++++++\n")
     print(f"1. Find Max")
     print(f"2. Find Minimum")
