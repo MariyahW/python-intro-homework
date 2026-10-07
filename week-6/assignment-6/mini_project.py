@@ -1,0 +1,93 @@
+numbers = [42, 17, 83, 5, 61, 29, 74, 8, 55, 93, 31, 66, 14, 47, 78, 3, 59, 22, 86, 40]
+# input_choice = 0
+# max=-1
+# min=100
+# inList=False
+
+
+def find_max(numbers):
+    max = -1
+    for n in numbers:
+        if n > max:
+            max = n
+    return max
+
+
+def find_min(numbers):
+    min = 100
+    for n in numbers:
+        if n < min:
+            min = n
+    return min
+
+
+def search(numbers, searcher):
+    inList = False
+    for n in numbers:
+        if n == int(searcher) and inList == False:
+            inList = True
+            return numbers.index(n)
+            # print(f"{search} is in the list at index {numbers.index(n)}.")
+            #
+            # break
+    if inList == False:
+        return -1
+
+
+def bubble_sort(numbers):
+
+    nums_copy = numbers.copy()
+    lengthy = len(nums_copy)
+    for i in range(lengthy - 1):
+        for j in range(lengthy - i - 1):
+            if nums_copy[j] > nums_copy[j + 1]:
+                nums_copy[j], nums_copy[j + 1] = nums_copy[j + 1], nums_copy[j]
+    return nums_copy
+
+
+def show_menu():
+
+    print(f"++++++++ Number Cruncher ++++++++\n")
+    print(f"1. Find Max")
+    print(f"2. Find Minimum")
+    print(f"3. Search for a number")
+    print(f"4. Sort the list")
+    print(f"5. Quit")
+    return input("Enter your choice (1-5): ")
+
+
+def main():
+    input_choice = ""
+    while input_choice != "5":
+
+        input_choice = show_menu()
+
+        match input_choice:
+            case "1":
+                print(f"The maximum number in the list is:{find_max(numbers)}")
+            case "2":
+                print(f"The minimum number in the list is: {find_min(numbers)}")
+            case "3":
+                searcher = input("Enter a number to search for: ")
+
+                ans = search(numbers, searcher)
+                if ans == -1:
+                    print(f"{searcher} is not in the list.")
+                else:
+                    print(f"{searcher} is in the list at index {ans}.")
+
+                # inList=False
+
+            case "4":
+                sorted_list = bubble_sort(numbers)
+                print(f"The sorted list is: {sorted_list}")
+
+            case "5":
+                print("Thank you for using the Number Cruncher!")
+            case _:
+                print("Invalid choice. Please enter a number between 1 and 5.")
+
+
+if __name__ == "__main__":
+    main()
+    # print(numbers)  # remains unsorted
