@@ -26,7 +26,7 @@ try:
     with open(f"{cat}_report.txt", "w") as file:
         file.write(f"{cat} expense Report generated - {curDate}\n")
         for item in items:
-            file.write(f"{item["date"]}: ${item["amount"]:.2f}\n")
+            file.write(f"{item['date']}: ${item['amount']:.2f}\n")
         file.write(f"Total: ${total:.2f}")
 except Exception as error:
     print(error)
