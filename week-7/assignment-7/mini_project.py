@@ -6,6 +6,7 @@ items = []
 total = 0
 cat = input("Which category are you searching for?")
 cat_formatted = cat.strip().capitalize()
+cat = cat.lower()
 try:
     path = os.path.join("..", "data", "expenses.csv")
     if not os.path.exists(path):
@@ -15,7 +16,7 @@ try:
         reader = csv.DictReader(file)
         for row in reader:
             row["amount"] = float(row["amount"])
-            if row["category"].lower() == cat.lower():
+            if row["category"].lower() == cat:
                 items.append(row)
             # print(row)
             # print(items)
@@ -24,10 +25,11 @@ try:
         total += item["amount"]
     # print(total)
     curDate = datetime.now().strftime("%B %d, %Y")
-    with open(f"{cat_formatted}_report.txt", "w") as file:
-        file.write(f"{cat_formatted} expense Report generated - {curDate}\n")
+    with open(f"{cat}_report.txt", "w") as file:
+        file.write(f"{cat_formatted} Expense Report — generated {curDate}\n")
         for item in items:
             file.write(f"{item['date']}: ${item['amount']:.2f}\n")
         file.write(f"Total: ${total:.2f}")
 except Exception as error:
     print(error)
+#

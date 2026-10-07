@@ -1,4 +1,4 @@
-Food expense Report generated - October 07, 2026
+Food Expense Report — generated October 07, 2026
 2024-03-01: $54.30
 2024-03-03: $8.75
 2024-03-05: $42.00
