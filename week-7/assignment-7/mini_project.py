@@ -23,7 +23,7 @@ try:
         total += item["amount"]
     # print(total)
     curDate = datetime.now().strftime("%B %d, %Y")
-    with open(f"../data/{cat}_report.txt", "w") as file:
+    with open(f"{cat}_report.txt", "w") as file:
         file.write(f"{cat} expense Report generated - {curDate}\n")
         for item in items:
             file.write(f"{item["date"]}: ${item["amount"]:.2f}\n")
