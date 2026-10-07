@@ -21,7 +21,7 @@ match day:
         elif dur == "evening":
             print("You should go get dinner with friends.")
         else:
-            ("Please enter a valid time of day.")
+            print("Please enter a valid time of day.")
     case "friday" | "saturday":
         if dur == "morning":
             print("You should go make pottery.")
