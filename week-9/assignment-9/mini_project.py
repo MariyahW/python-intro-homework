@@ -11,7 +11,7 @@ def searchName(countries, term):
     for country in countries:
         try:
             if term in country["names"]["common"].lower():
-                capitals = country.get("capital", [])
+                capitals = term.get("capital", [])
                 capital_name = capitals[0] if capitals else "No Capital"
                 list.append(
                     {
@@ -28,17 +28,17 @@ def searchName(countries, term):
 
 
 def filterRegion(countries, term):
-    list = []
+    regionList = []
     for country in countries:
         if term == country["region"].lower():
-            list.append(
+            regionList.append(
                 {
                     "name": country["names"]["common"],
                     "population": int(country["population"]),
                 }
             )
-    sorted_list = sorted(list, key=lambda x: x["population"], reverse=True)
-    return sorted_list
+    sorted_regionList = sorted(regionList, key=lambda x: x["population"], reverse=True)
+    return sorted_regionList
 
 
 def create():
