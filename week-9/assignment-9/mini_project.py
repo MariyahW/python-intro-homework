@@ -12,7 +12,7 @@ def searchName(countries, term):
         try:
             if term in country["names"]["common"].lower():
                 capitals = country.get("capitals", [])
-                capital_name = capitals[0] if capitals else "No Capital"
+                capital_name = capitals[0]["name"] if capitals else "No Capital"
                 list.append(
                     {
                         "country": country["names"]["common"],
