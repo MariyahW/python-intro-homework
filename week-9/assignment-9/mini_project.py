@@ -11,7 +11,7 @@ def searchName(countries, term):
     for country in countries:
         try:
             if term in country["names"]["common"].lower():
-                capitals = country.get("capital", [])
+                capitals = country.get("capitals", [])
                 capital_name = capitals[0] if capitals else "No Capital"
                 list.append(
                     {
@@ -55,6 +55,9 @@ try:
     api_key = os.getenv("API_Key")
     headers = {"Authorization": f"Bearer {api_key}"}
     response = requests.get(url, headers=headers)
+    if response.status_code != 200:
+        print(f"Failed to fetch data from API. Status Code: {response.status_code}")
+        exit()
     data = response.json()
     data = data["data"]["objects"]
     # print(data)
@@ -89,7 +92,7 @@ try:
                 break
             case _:
                 print("Invalid entry. Try again. ")
-                # ans = create()
+                ans = create()
 
 except Exception as err:
     print(err)
