@@ -11,7 +11,7 @@ def searchName(countries, term):
     for country in countries:
         try:
             if term in country["names"]["common"].lower():
-                capitals = term.get("capital", [])
+                capitals = country.get("capital", [])
                 capital_name = capitals[0] if capitals else "No Capital"
                 list.append(
                     {
@@ -47,7 +47,7 @@ def create():
     print(f"2. Filter by region")
     print(f"3. Quit")
     choice = input("Choose an option (1-3):")
-    return int(choice) if choice.isdigit else 0
+    return int(choice) if choice.isdigit() else 0
 
 
 try:
