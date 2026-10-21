@@ -1,0 +1,98 @@
+import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+option = ""
+
+
+def searchName(countries, term):
+    list = []
+    for country in countries:
+        try:
+            if term in country["names"]["common"].lower():
+                capitals = country.get("capitals", [])
+                capital_name = capitals[0]["name"] if capitals else "No Capital"
+                list.append(
+                    {
+                        "country": country["names"]["common"],
+                        "capital": capital_name,
+                        "region": country["region"],
+                        "population": country["population"],
+                    }
+                )
+        except KeyError as key:
+            print(f"Skipping result due to missing {key}")
+
+    return list
+
+
+def filterRegion(countries, term):
+    regionList = []
+    for country in countries:
+        if term == country["region"].lower():
+            regionList.append(
+                {
+                    "name": country["names"]["common"],
+                    "population": int(country["population"]),
+                }
+            )
+    sorted_regionList = sorted(regionList, key=lambda x: x["population"], reverse=True)
+    return sorted_regionList
+
+
+def create():
+    print(f"=== Country Explorer ===")
+    print(f"1. Search by name")
+    print(f"2. Filter by region")
+    print(f"3. Quit")
+    choice = input("Choose an option (1-3):")
+    return int(choice) if choice.isdigit() else 0
+
+
+try:
+    url = "https://api.restcountries.com/countries/v5?response_fields=names.common,capitals,region,population"
+    api_key = os.getenv("API_Key")
+    headers = {"Authorization": f"Bearer {api_key}"}
+    response = requests.get(url, headers=headers)
+    if response.status_code != 200:
+        print(f"Failed to fetch data from API. Status Code: {response.status_code}")
+        exit()
+    data = response.json()
+    data = data["data"]["objects"]
+    # print(data)
+    ans = create()
+    while True:
+        match ans:
+            case 1:
+                searchTermC = input("What is your search term? ").lower()
+                countries = searchName(data, searchTermC)
+                if not countries:
+                    print(f"No countries found matching {searchTermC}")
+                else:
+                    for country in countries:
+                        print(
+                            f"{country["country"]} | Capital : {country["capital"]} | Region : {country["region"]} | Population {country["population"]}"
+                        )
+                ans = create()
+            case 2:
+                searchTermR = input(
+                    "What region would you like to search for? "
+                ).lower()
+
+                newList = filterRegion(data, searchTermR)
+                if not newList:
+                    print(f"No regions found matching {searchTermR}")
+                else:
+                    for country in newList:
+                        print(f"{country["name"]}")
+                ans = create()
+            case 3:
+                print("Thanks for stopping by!")
+                break
+            case _:
+                print("Invalid entry. Try again. ")
+                ans = create()
+
+except Exception as err:
+    print(err)
