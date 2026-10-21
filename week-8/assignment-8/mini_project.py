@@ -19,7 +19,11 @@ try:
                     raise ValueError("extra column detected — skipped")
 
                 worked.append(
-                    (f"{line["name"]} | {line["category"]} | {float(line["amount"])} ")
+                    {
+                        "name": line["name"],
+                        "category": line["category"],
+                        "amount": float(line["amount"]),
+                    }
                 )
                 parsed += 1
 
